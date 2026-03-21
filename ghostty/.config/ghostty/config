@@ -1,0 +1,8 @@
+theme = "Kanagawa Wave"
+macos-option-as-alt = true
+font-size = 14
+font-family = "JetBrainsMono Nerd Font Mono"
+background-opacity=0.95
+background-blur = 20
+keybind = shift+enter=text:\n
+shell-integration-features=ssh-terminfo

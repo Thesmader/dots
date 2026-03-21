@@ -1,0 +1,10 @@
+[user]
+        email = smarak.das@marketfeed.com
+        name = Thesmader
+        signingkey = 05324CEB5785CB37
+
+[pull]
+        rebase = false
+
+[commit]
+        gpgsign = true

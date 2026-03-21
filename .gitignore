@@ -1,0 +1,22 @@
+# OS
+.DS_Store
+
+# Migration env (contains paths to secrets)
+.env.migration
+
+# Secrets — never track
+gh/.config/gh/hosts.yml
+ssh/.ssh/id_*
+ssh/.ssh/known_hosts
+
+# Claude — auto-generated
+claude/.claude/settings.local.json
+claude/.claude/plugins/
+claude/.claude/cache/
+claude/.claude/sessions/
+claude/.claude/projects/
+claude/.claude/todos/
+claude/.claude/tasks/
+claude/.claude/backups/
+claude/.claude/scripts/
+claude/.claude/local/

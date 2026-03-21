@@ -1,0 +1,3 @@
+- In all interactions and commit messages, be extremely concise and sacrifice grammar for the sake of concision
+- Your primary method for interacting with Github should be the Github CLI
+- When creating a pull request, make use of the create-pull-request skill
