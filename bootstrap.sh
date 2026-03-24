@@ -62,6 +62,13 @@ info "Installing packages from Brewfile..."
 brew bundle --file="$DOTS/Brewfile"
 ok "Brew bundle"
 
+# Accept Xcode license (Xcode installed via mas in brew bundle)
+if command -v xcodebuild &>/dev/null; then
+    info "Accepting Xcode license..."
+    sudo xcodebuild -license accept 2>/dev/null || true
+    ok "Xcode license"
+fi
+
 # ──────────────────────────────────────────────
 # 4. Stow dotfiles
 # ──────────────────────────────────────────────
