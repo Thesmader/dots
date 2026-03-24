@@ -4,18 +4,24 @@ Dotfiles and machine setup automation for macOS (Apple Silicon).
 
 ## Quick Start
 
-On a fresh Mac:
+On a fresh Mac, run this single command:
 
 ```bash
-# 1. Clone this repo
-git clone <your-repo-url> ~/dots
-cd ~/dots
-
-# 2. Run the bootstrap script
-./bootstrap.sh
+bash <(curl -s https://raw.githubusercontent.com/Thesmader/dots/main/bootstrap.sh)
 ```
 
-That's it. The script handles everything from Xcode CLT to Neovim plugins.
+That's it. The script installs Xcode CLT, clones this repo, and handles everything through to Neovim plugins.
+
+Alternatively, if you want to set up `.env.migration` first:
+
+```bash
+xcode-select --install  # wait for it to finish
+git clone https://github.com/Thesmader/dots.git ~/dots
+cd ~/dots
+cp .env.migration.template .env.migration
+# fill in .env.migration with paths to GPG keys, SSH keys, Raycast export
+./bootstrap.sh
+```
 
 ## What's Inside
 

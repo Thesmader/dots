@@ -2,6 +2,7 @@
 set -euo pipefail
 
 DOTS="$HOME/dots"
+REPO="https://github.com/Thesmader/dots.git"
 ENV_FILE="$DOTS/.env.migration"
 
 info() { printf "\033[1;34m=> %s\033[0m\n" "$1"; }
@@ -10,7 +11,27 @@ warn() { printf "\033[1;33m!  %s\033[0m\n" "$1"; }
 pause() { printf "\033[1;33m⏸  %s\033[0m\n" "$1"; read -rp "   Press Enter to continue..."; }
 
 # ──────────────────────────────────────────────
-# 0. Load migration env
+# 0. Xcode Command Line Tools (needed for git)
+# ──────────────────────────────────────────────
+info "Checking Xcode CLT..."
+if ! xcode-select -p &>/dev/null; then
+    xcode-select --install
+    pause "Xcode CLT is installing. Wait for it to finish, then press Enter"
+fi
+ok "Xcode CLT"
+
+# ──────────────────────────────────────────────
+# 0.1 Clone dotfiles repo if not present
+# ──────────────────────────────────────────────
+if [ ! -d "$DOTS" ]; then
+    info "Cloning dotfiles repo..."
+    git clone "$REPO" "$DOTS"
+    ok "Dotfiles cloned"
+fi
+cd "$DOTS"
+
+# ──────────────────────────────────────────────
+# 0.2 Load migration env
 # ──────────────────────────────────────────────
 if [ -f "$ENV_FILE" ]; then
     info "Loading .env.migration..."
@@ -22,16 +43,6 @@ else
     warn "No .env.migration found — secrets will need manual setup"
     warn "Copy .env.migration.template to .env.migration and fill it in"
 fi
-
-# ──────────────────────────────────────────────
-# 1. Xcode Command Line Tools
-# ──────────────────────────────────────────────
-info "Checking Xcode CLT..."
-if ! xcode-select -p &>/dev/null; then
-    xcode-select --install
-    pause "Xcode CLT is installing. Wait for it to finish, then press Enter"
-fi
-ok "Xcode CLT"
 
 # ──────────────────────────────────────────────
 # 2. Homebrew
