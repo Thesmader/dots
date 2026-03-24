@@ -54,12 +54,10 @@ cask "httpie"
 cask "httpie-desktop"
 cask "visual-studio-code"
 cask "postman"
-cask "arduino-ide"
 cask "android-commandlinetools"
 
 # Casks — browsers
 cask "arc"
-cask "firefox"
 cask "google-chrome"
 
 # Casks — communication
