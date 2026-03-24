@@ -2,6 +2,7 @@
 tap "leoafarias/fvm"
 tap "jesseduffield/lazydocker"
 tap "nikitabobko/tap"
+tap "pear-devs/pear"
 
 # CLI tools
 brew "aria2"
@@ -67,6 +68,7 @@ cask "whatsapp"
 
 # Casks — media
 cask "iina"
+cask "pear-devs/pear/pear-desktop"
 
 # Casks — utilities
 cask "bitwarden"

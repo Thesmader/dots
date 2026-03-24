@@ -70,6 +70,15 @@ if command -v xcodebuild &>/dev/null; then
 fi
 
 # ──────────────────────────────────────────────
+# 3.1 Claude Code (native install)
+# ──────────────────────────────────────────────
+info "Installing Claude Code..."
+if ! command -v claude &>/dev/null; then
+    curl -fsSL https://claude.ai/install.sh | bash
+fi
+ok "Claude Code"
+
+# ──────────────────────────────────────────────
 # 4. Stow dotfiles
 # ──────────────────────────────────────────────
 info "Stowing dotfiles..."
@@ -112,11 +121,12 @@ ok "Default shell set to Fish"
 # ──────────────────────────────────────────────
 # 6. mise — Node & Go
 # ──────────────────────────────────────────────
-info "Setting up mise (node, go)..."
+info "Setting up mise (node, go, bun)..."
 eval "$(mise activate bash)"
 mise use -g node@lts
 mise use -g go@latest
-ok "mise: node + go"
+mise use -g bun@latest
+ok "mise: node + go + bun"
 
 # ──────────────────────────────────────────────
 # 7. Flutter via FVM
@@ -156,6 +166,11 @@ defaults write com.apple.menuextra.clock ShowAMPM -bool true
 # Keyboard
 defaults write NSGlobalDomain KeyRepeat -int 2
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
+
+# Trackpad: tap to click
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
 killall Dock Finder 2>/dev/null || true
 ok "macOS defaults"
