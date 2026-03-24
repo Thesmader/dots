@@ -44,7 +44,7 @@ brew "leoafarias/fvm/fvm"
 cask "ghostty"
 
 # Casks — productivity
-cask "aerospace"
+cask "nikitabobko/tap/aerospace"
 cask "flameshot"
 cask "maccy"
 cask "raycast"
@@ -56,7 +56,6 @@ cask "httpie-desktop"
 cask "visual-studio-code"
 cask "postman"
 cask "arduino-ide"
-cask "beekeeper-studio"
 cask "android-commandlinetools"
 
 # Casks — browsers
