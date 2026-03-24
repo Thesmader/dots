@@ -228,14 +228,7 @@ fi
 ok "Tmux plugins"
 
 # ──────────────────────────────────────────────
-# 15. Neovim plugins
-# ──────────────────────────────────────────────
-info "Installing Neovim plugins (headless)..."
-nvim --headless "+Lazy! sync" +qa 2>/dev/null || true
-ok "Neovim plugins"
-
-# ──────────────────────────────────────────────
-# 16. Raycast
+# 15. Raycast
 # ──────────────────────────────────────────────
 if [ -n "${RAYCAST_EXPORT:-}" ] && [ -f "$RAYCAST_EXPORT" ]; then
     info "Opening Raycast export for import..."

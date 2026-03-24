@@ -3,7 +3,7 @@ PACKAGES := fish zsh nvim git ghostty aerospace tmux starship direnv jj gh claud
 
 .PHONY: all brew stow unstow defaults fish tmux nvim help
 
-all: brew stow defaults fish tmux nvim ## Run full setup
+all: brew stow defaults fish tmux ## Run full setup
 
 brew: ## Install/update Homebrew packages
 	brew bundle --file=$(DOTS)/Brewfile
