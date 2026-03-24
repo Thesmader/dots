@@ -68,14 +68,11 @@ cask "whatsapp"
 cask "iina"
 
 # Casks — utilities
-cask "aldente"
 cask "bitwarden"
 cask "capacities"
 cask "cloudflare-warp"
-cask "coconutbattery"
 cask "keyboardcleantool"
 cask "localsend"
-cask "obs"
 cask "figma@beta"
 
 # Fonts
