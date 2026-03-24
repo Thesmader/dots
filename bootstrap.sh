@@ -57,6 +57,7 @@ ok "Homebrew"
 # ──────────────────────────────────────────────
 # 3. Brew bundle
 # ──────────────────────────────────────────────
+pause "Sign into the App Store before continuing (needed for mas installs)"
 info "Installing packages from Brewfile..."
 brew bundle --file="$DOTS/Brewfile"
 ok "Brew bundle"
