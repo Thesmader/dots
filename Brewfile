@@ -2,7 +2,6 @@
 tap "leoafarias/fvm"
 tap "jesseduffield/lazydocker"
 tap "nikitabobko/tap"
-tap "homebrew/bundle"
 
 # CLI tools
 brew "aria2"
