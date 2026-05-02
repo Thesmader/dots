@@ -1,7 +1,7 @@
 # Taps
 tap "leoafarias/fvm"
-tap "jesseduffield/lazydocker"
 tap "nikitabobko/tap"
+tap "k06a/tap"
 tap "pear-devs/pear"
 
 # CLI tools
@@ -13,6 +13,7 @@ brew "cocoapods"
 brew "coreutils"
 brew "curl"
 brew "direnv"
+brew "eza"
 brew "fd"
 brew "fish"
 brew "fzf"
@@ -21,17 +22,21 @@ brew "git"
 brew "gnu-sed"
 brew "gnupg"
 brew "grep"
+brew "ripgrep"
 brew "jj"
 brew "jq"
 brew "lazydocker"
 brew "lazygit"
 brew "macchina"
+brew "k06a/tap/macpow"
 brew "mas"
 brew "mise"
 brew "openjdk@17"
 brew "scrcpy"
+brew "sesh"
 brew "starship"
 brew "stow"
+brew "superfile"
 brew "tldr"
 brew "tmux"
 brew "uv"
@@ -52,15 +57,14 @@ cask "raycast"
 
 # Casks — dev tools
 cask "orbstack"
-cask "httpie"
 cask "httpie-desktop"
 cask "visual-studio-code"
 cask "postman"
 cask "android-commandlinetools"
 
 # Casks — browsers
-cask "arc"
 cask "google-chrome"
+cask "helium-browser"
 
 # Casks — communication
 cask "discord"
@@ -77,6 +81,7 @@ cask "cloudflare-warp"
 cask "keyboardcleantool"
 cask "localsend"
 cask "figma@beta"
+cask "requestly"
 
 # Fonts
 cask "font-jetbrains-mono-nerd-font"

@@ -5,25 +5,39 @@
   },
   "permissions": {
     "allow": [
-      "Bash(npm run mfis:test:*)",
-      "Bash(/Users/thesmader/.claude/plugins/cache/claude-plugins-official/ralph-wiggum/*)"
+      "Read(./.env.template)"
+    ],
+    "deny": [
+      "Read(**/.env*)",
+      "Read(**/.dev.vars*)",
+      "Read(**/*.pem)",
+      "Read(**/*.key)",
+      "Read(**/secrets/**)",
+      "Read(**/credentials/**)",
+      "Read(**/.aws/**)",
+      "Read(**/.ssh/**)",
+      "Read(**/config/database.yml)",
+      "Read(**/config/credentials.json)",
+      "Read(**/.npmrc)",
+      "Read(**/.pypirc)",
+      "Write(**/.env*)",
+      "Write(**/secrets/**)",
+      "Write(**/.ssh/**)"
     ],
     "defaultMode": "acceptEdits"
   },
   "statusLine": {
     "type": "command",
-    "command": "/Users/thesmader/.bun/bin/bun /Users/thesmader/.claude/scripts/statusline.ts"
+    "command": "/Users/thesmader/.local/share/mise/shims/bun /Users/thesmader/.claude/scripts/statusline.ts"
   },
   "enabledPlugins": {
-    "code-review@claude-code-collections": true,
-    "typescript-lsp@claude-plugins-official": true,
     "figma@claude-plugins-official": true,
-    "mf-code-review@claude-code-collections": true,
     "mf-tech-spec@claude-code-collections": true,
     "code-simplifier@claude-plugins-official": true,
     "mf-ralph@claude-code-collections": true,
     "worktrunk@worktrunk": true,
-    "frontend-design@claude-plugins-official": true
+    "frontend-design@claude-plugins-official": true,
+    "mf-code-review@claude-code-collections": true
   },
   "extraKnownMarketplaces": {
     "worktrunk": {
@@ -31,9 +45,21 @@
         "source": "github",
         "repo": "max-sixty/worktrunk"
       }
+    },
+    "claude-code-collections": {
+      "source": {
+        "source": "github",
+        "repo": "marketfeed/claude-code-collection"
+      }
     }
   },
+  "effortLevel": "high",
   "promptSuggestionEnabled": false,
+  "awaySummaryEnabled": false,
   "autoUpdatesChannel": "latest",
-  "voiceEnabled": true
+  "tui": "fullscreen",
+  "skipDangerousModePermissionPrompt": true,
+  "editorMode": "vim",
+  "voiceEnabled": true,
+  "skipAutoPermissionPrompt": true
 }

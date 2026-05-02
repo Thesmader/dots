@@ -210,3 +210,8 @@ automatically-unhide-macos-hidden-apps = false
     down = 'volume down'
     up = 'volume up'
     shift-down = ['volume set 0', 'mode main']
+
+# Auto-tile iOS Simulator windows
+[[on-window-detected]]
+if.app-id = 'com.apple.iphonesimulator'
+run = ['layout tiling']

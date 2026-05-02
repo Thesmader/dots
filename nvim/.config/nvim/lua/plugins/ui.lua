@@ -8,6 +8,7 @@ return {
       vim.cmd.colorscheme("oldworld")
     end,
   },
+  { "topazape/oldtale.nvim", lazy = true },
 
   -- statusline
   {
@@ -28,6 +29,22 @@ return {
           { "filename", path = 1 },
         },
         lualine_x = {
+          {
+            function()
+              return vim.diagnostic.status()
+            end,
+            cond = function()
+              return vim.diagnostic.status() ~= ""
+            end,
+          },
+          {
+            function()
+              return vim.ui.progress_status()
+            end,
+            cond = function()
+              return vim.ui.progress_status() ~= ""
+            end,
+          },
           { "diff" },
           { "filetype", icon_only = true },
         },
@@ -81,6 +98,21 @@ return {
       input = { enabled = true },
       scope = { enabled = true },
       words = { enabled = true },
+      dashboard = {
+        enabled = true,
+        preset = {
+          header = "│ ╲ ││\n││╲╲││\n││ ╲ │",
+          keys = {
+            { icon = " ", key = "f", desc = "Find File", action = ":FzfLua files" },
+            { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+            { icon = " ", key = "g", desc = "Find Text", action = ":FzfLua live_grep" },
+            { icon = " ", key = "r", desc = "Recent Files", action = ":FzfLua oldfiles" },
+            { icon = " ", key = "s", desc = "Restore Session", section = "session" },
+            { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy" },
+            { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+          },
+        },
+      },
     },
     keys = {
       { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss notifications" },

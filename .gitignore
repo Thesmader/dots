@@ -9,14 +9,13 @@ gh/.config/gh/hosts.yml
 ssh/.ssh/id_*
 ssh/.ssh/known_hosts
 
-# Claude — auto-generated
-claude/.claude/settings.local.json
-claude/.claude/plugins/
-claude/.claude/cache/
-claude/.claude/sessions/
-claude/.claude/projects/
-claude/.claude/todos/
-claude/.claude/tasks/
-claude/.claude/backups/
-claude/.claude/scripts/
-claude/.claude/local/
+# Claude — ignore everything, then whitelist
+claude/.claude/*
+!claude/.claude/CLAUDE.md
+!claude/.claude/settings.json
+!claude/.claude/commands/
+!claude/.claude/scripts/
+claude/.claude/scripts/.usage-cache.json
+!claude/.claude/skills/
+
+**/.zcompdump

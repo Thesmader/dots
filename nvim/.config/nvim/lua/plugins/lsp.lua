@@ -18,12 +18,27 @@ return {
           map("gr", vim.lsp.buf.references, "References")
           map("gI", vim.lsp.buf.implementation, "Goto implementation")
           map("gy", vim.lsp.buf.type_definition, "Goto type definition")
+          map("grt", vim.lsp.buf.type_definition, "Goto type definition")
           map("gD", vim.lsp.buf.declaration, "Goto declaration")
           map("K", vim.lsp.buf.hover, "Hover")
           map("gK", vim.lsp.buf.signature_help, "Signature help")
           map("<leader>ca", vim.lsp.buf.code_action, "Code action", { "n", "v" })
           map("<leader>cr", vim.lsp.buf.rename, "Rename")
+          map("<leader>cx", vim.lsp.codelens.run, "Run code lens")
+          map("<leader>cX", vim.lsp.codelens.refresh, "Refresh code lens")
+          map("<leader>cD", vim.lsp.buf.workspace_diagnostics, "Workspace diagnostics")
           map("<leader>cl", "<cmd>LspInfo<cr>", "LSP info")
+
+          local client = vim.lsp.get_client_by_id(event.data.client_id)
+          if client and client:supports_method("textDocument/codeLens") then
+            local group = vim.api.nvim_create_augroup("lsp-codelens-" .. event.buf, { clear = true })
+            vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+              buffer = event.buf,
+              group = group,
+              callback = vim.lsp.codelens.refresh,
+            })
+            vim.lsp.codelens.refresh({ bufnr = event.buf })
+          end
         end,
       })
 

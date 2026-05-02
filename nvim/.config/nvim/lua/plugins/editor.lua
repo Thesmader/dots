@@ -1,5 +1,16 @@
 return {
   {
+    "hat0uma/csvview.nvim",
+    ft = "csv",
+    opts = {
+      view = {
+        display_mode = "border",
+      },
+    },
+    cmd = { "CsvViewEnable", "CsvViewDisable", "CsvViewToggle" },
+  },
+
+  {
     "folke/flash.nvim",
     event = "VeryLazy",
     keys = {

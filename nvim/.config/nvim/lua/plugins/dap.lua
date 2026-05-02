@@ -1,12 +1,9 @@
---- Strip comments and trailing commas from JSONC (VSCode launch.json format)
+--- Decode JSONC (VSCode launch.json format)
 local function decode_jsonc(str)
-  -- remove single-line comments
-  str = str:gsub("//[^\n]*", "")
-  -- remove multi-line comments
-  str = str:gsub("/%*.-%*/", "")
-  -- remove trailing commas before } or ]
+  -- Nvim 0.12+: native JSON comment support
+  -- Keep a trailing-comma cleanup pass because launch.json commonly contains them.
   str = str:gsub(",%s*([%]%}])", "%1")
-  return vim.json.decode(str)
+  return vim.json.decode(str, { skip_comments = true })
 end
 
 --- Load .vscode/launch.json with JSONC support and type remapping

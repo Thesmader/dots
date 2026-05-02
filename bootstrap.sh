@@ -137,12 +137,24 @@ fvm global stable
 ok "Flutter (stable via FVM)"
 
 # ──────────────────────────────────────────────
+# 7.1 Shorebird
+# ──────────────────────────────────────────────
+info "Installing Shorebird..."
+if ! command -v shorebird &>/dev/null; then
+    curl --proto '=https' --tlsv1.2 https://raw.githubusercontent.com/shorebirdtech/install/main/install.sh -sSf | bash
+fi
+ok "Shorebird"
+
+# ──────────────────────────────────────────────
 # 8. Android SDK
 # ──────────────────────────────────────────────
 info "Setting up Android SDK..."
 export ANDROID_HOME="$HOME/Library/Android/sdk"
 mkdir -p "$ANDROID_HOME"
-yes | sdkmanager --sdk_root="$ANDROID_HOME" "platform-tools" "platforms;android-35" "build-tools;35.0.0" "emulator" 2>/dev/null || true
+
+SDKMANAGER="$(brew --prefix)/share/android-commandlinetools/cmdline-tools/latest/bin/sdkmanager"
+yes | "$SDKMANAGER" --sdk_root="$ANDROID_HOME" "cmdline-tools;latest" "platform-tools" "platforms;android-36" "build-tools;36.0.0" "emulator" 2>/dev/null || true
+yes | flutter doctor --android-licenses 2>/dev/null || true
 ok "Android SDK"
 
 # ──────────────────────────────────────────────
@@ -153,6 +165,7 @@ info "Applying macOS defaults..."
 # Dock
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock show-recents -bool false
+defaults write com.apple.dock tilesize -int 64
 
 # Finder
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
@@ -171,6 +184,9 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 15
 defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
+# Mission Control: group windows by application
+defaults write com.apple.dock expose-group-apps -bool true
 
 killall Dock Finder 2>/dev/null || true
 ok "macOS defaults"
